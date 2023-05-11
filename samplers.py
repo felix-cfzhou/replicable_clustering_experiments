@@ -3,7 +3,7 @@ from typing import Union
 
 import numpy as np
 from numpy.random import RandomState
-from scipy.stats import truncnorm 
+from scipy.stats import truncnorm
 from sklearn import datasets
 
 
@@ -38,11 +38,13 @@ class MixtureTruncNormSampler(AbstractSampler):
         self.random_state.shuffle(all_samples)
 
         return all_samples.reshape((-1, 2))[:size]
-    
+
 
 class MoonsSampler(AbstractSampler):
     def __call__(self, size: int) -> np.array:
-        samples, _ = datasets.make_moons(n_samples=size, shuffle=True, noise=0.02, random_state=self.random_state)
+        samples, _ = datasets.make_moons(
+            n_samples=size, shuffle=True, noise=0.02, random_state=self.random_state
+        )
         samples[:, 0] -= 0.5
         samples[:, 1] -= 0.2
         samples[:, 0] /= 2.0

@@ -3,8 +3,8 @@ from typing import Union
 import numpy as np
 from numpy.random import RandomState
 
-from quad_tree import r_quad_tree, QuadTreeSampler
 from mass_estimation import r_prob_mass
+from quad_tree import QuadTreeSampler, r_quad_tree
 
 
 def r_coreset(
@@ -43,7 +43,12 @@ def r_coreset(
 
     quad_tree_sampler = QuadTreeSampler(sampler, root)
     coreset, mass = r_prob_mass(
-        quad_tree_sampler, N=N, rho=rho, eps=eps/10, delta=delta, random_state=random_state
+        quad_tree_sampler,
+        N=N,
+        rho=rho,
+        eps=eps / 10,
+        delta=delta,
+        random_state=random_state,
     )
 
     return coreset, mass

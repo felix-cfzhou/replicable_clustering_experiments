@@ -4,8 +4,8 @@ from typing import List, Union
 import numpy as np
 from numpy.random import RandomState
 
-from samplers import AbstractSampler
 from heavy_hitters import r_heavy_hitters
+from samplers import AbstractSampler
 
 
 class QuadTreeNode:
@@ -90,7 +90,7 @@ class QuadTreeNode:
             node = new_node
 
         return output
-    
+
     @staticmethod
     def make_children(nodes):
         child_nodes = []
@@ -104,8 +104,8 @@ class QuadTreeNode:
                 child_nodes.append(child_node)
 
         return child_nodes
-    
-    
+
+
 class IndexSampler(AbstractSampler):
     def __init__(
         self,
@@ -128,7 +128,7 @@ class IndexSampler(AbstractSampler):
                 ):
                     idx_samples[i] = j
         return idx_samples
-    
+
 
 def r_quad_tree(
     sampler: AbstractSampler,
@@ -144,7 +144,7 @@ def r_quad_tree(
 ):
     assert 0 < eps < 1
     assert 0 < rho < 1
-    
+
     if not isinstance(random_state, RandomState):
         random_state = RandomState(random_state)
 

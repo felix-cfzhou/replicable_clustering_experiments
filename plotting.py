@@ -1,14 +1,14 @@
 from typing import Optional, Union
 
-import numpy as np
-from numpy.random import RandomState
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.axes import Axes
 from matplotlib.figure import Figure
+from numpy.random import RandomState
 from sklearn.cluster import KMeans
 
-from samplers import AbstractSampler
 from coreset import r_coreset
+from samplers import AbstractSampler
 
 
 def plot2D(
@@ -26,9 +26,8 @@ def plot2D(
     ax.scatter(data[:, 0], data[:, 1], *args, **kwargs)
     ax.set_xlim(-1, 1)
     ax.set_ylim(-1, 1)
-    
-    
-    
+
+
 class MemorizedSampler(AbstractSampler):
     def __init__(self, sampler, random_state: Union[RandomState, int, None] = None):
         super().__init__(random_state)
@@ -42,8 +41,7 @@ class MemorizedSampler(AbstractSampler):
 
     def get_samples(self):
         return np.concatenate(self.samples, axis=0)
-    
-    
+
 
 def compare_plot_kmeans(
     sampler: AbstractSampler, random_seed: int, fig: Figure, axes: Axes
@@ -67,8 +65,10 @@ def compare_plot_kmeans(
         data = memorized_sampler.get_samples()
         indices = random_state.choice(data.shape[0], 10000, replace=False)
 
-        kmeans = KMeans(n_clusters=3).fit(data)
-        rKmeans = KMeans(n_clusters=3).fit(coreset, sample_weight=mass)
+        kmeans = KMeans(n_clusters=3, random_state=random_state).fit(data)
+        rKmeans = KMeans(n_clusters=3, random_state=random_state).fit(
+            coreset, sample_weight=mass
+        )
 
         plot2D(data[indices], axes[idx], s=16.0, c="tab:blue", label="Samples")
         plot2D(

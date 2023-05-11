@@ -1,8 +1,6 @@
 # Replicable Clustering
 
-
-Implementation and experiments for replicable clustering.
-
+Implementation and experiments for replicable clustering algorithm.
 
 # Usage
 
@@ -31,7 +29,7 @@ plot2D(truncnorm_sampler(1000))
 
 
     
-![png](fig/output_3_0.png)
+![png](fig/output_5_0.png)
     
 
 
@@ -47,7 +45,7 @@ plot2D(moons_sampler(1000))
 
 
     
-![png](fig/output_5_0.png)
+![png](fig/output_7_0.png)
     
 
 
@@ -151,7 +149,7 @@ plt.show()
 
 
     
-![png](fig/output_11_0.png)
+![png](fig/output_13_0.png)
     
 
 
@@ -236,7 +234,7 @@ plt.show()
 
 
     
-![png](fig/output_15_0.png)
+![png](fig/output_17_0.png)
     
 
 
@@ -246,7 +244,7 @@ plt.show()
 ```python
 from plotting import compare_plot_kmeans
 
-truncnorm_sampler = MixtureTruncNormSampler(32)  # external random seed
+truncnorm_sampler = MixtureTruncNormSampler(12345)  # external random seed
 
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 compare_plot_kmeans(truncnorm_sampler, 2, fig, axes)
@@ -258,13 +256,13 @@ plt.show()
 
 
     
-![png](fig/output_17_0.png)
+![png](fig/output_19_0.png)
     
 
 
 
 ```python
-moons_sampler = MoonsSampler(0)  # external random seed
+moons_sampler = MoonsSampler(54321)  # external random seed
 
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 compare_plot_kmeans(moons_sampler, 2, fig, axes)
@@ -278,7 +276,7 @@ plt.show()
 
 
     
-![png](fig/output_18_0.png)
+![png](fig/output_20_0.png)
     
 
 
