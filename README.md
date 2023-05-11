@@ -1,3 +1,12 @@
+# Replicable Clustering
+
+
+Implementation and experiments for replicable clustering.
+
+
+# Usage
+
+
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
@@ -7,9 +16,9 @@ plt.rcParams["font.family"] = "Times New Roman"
 plt.rcParams["figure.dpi"] = 100.0
 ```
 
-# Environment
+## Environment
 
-## Mixture of Truncated Gaussians
+### Mixture of Truncated Gaussians
 
 
 ```python
@@ -26,7 +35,7 @@ plot2D(truncnorm_sampler(1000))
     
 
 
-## Two Moons Distribution
+### Two Moons Distribution
 
 
 ```python
@@ -42,9 +51,9 @@ plot2D(moons_sampler(1000))
     
 
 
-# Replicable K-Means++
+## Replicable K-Means++
 
-## Replicable Heavy Hitters
+### Replicable Heavy Hitters
 
 
 ```python
@@ -87,7 +96,7 @@ print(
     [[2]]
 
 
-## Replicable Quad Tree
+### Replicable Quad Tree
 
 
 ```python
@@ -146,7 +155,7 @@ plt.show()
     
 
 
-## Replicable Probability Mass Estimation
+### Replicable Probability Mass Estimation
 
 
 ```python
@@ -174,7 +183,7 @@ print(samples2, mass2)
      [2]] [0.29809856 0.30215553 0.39974591]
 
 
-## Replicable Coreset
+### Replicable Coreset
 
 
 ```python
@@ -231,7 +240,7 @@ plt.show()
     
 
 
-## Replicable K-Means++
+### Replicable K-Means++
 
 
 ```python
