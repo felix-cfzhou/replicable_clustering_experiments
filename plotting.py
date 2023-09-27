@@ -76,6 +76,7 @@ def compare_plot_kmeans(
             axes[idx],
             s=64.0,
             c="tab:orange",
+            marker="s",
             label="Non-Replicable Centers",
         )
         plot2D(
@@ -83,6 +84,7 @@ def compare_plot_kmeans(
             axes[idx],
             s=64.0,
             c="tab:red",
+            marker="^",
             label="Replicable Centers",
         )
         plot2D(
@@ -95,8 +97,13 @@ def compare_plot_kmeans(
             label="Coreset",
         )
 
+        axes[idx].set_xticks([])
+        axes[idx].set_yticks([])
         axes[idx].set_xlim(-1, 1)
         axes[idx].set_ylim(-1, 1)
-        axes[idx].set_title(f"Execution {idx+1}")
+        axes[idx].set_title(f"Execution {idx+1}  ", loc="right", y=1.0, pad=-14)
         if idx == 1:
-            axes[idx].legend(loc="center left", bbox_to_anchor=(1, 0.5))
+            axes[idx].legend(
+                loc="lower left",
+                # bbox_to_anchor=(1, 0.5)
+            )
