@@ -14,6 +14,7 @@ from samplers import AbstractSampler
 def plot2D(
     data: np.array,
     ax: Optional[Axes] = None,
+    transpose: bool = False,
     *args,
     **kwargs,
 ):
@@ -23,7 +24,10 @@ def plot2D(
     if ax is None:
         ax = plt.gca()
 
-    ax.scatter(data[:, 0], data[:, 1], *args, **kwargs)
+    if transpose:
+        ax.scatter(data[:, 1], data[:, 0], *args, **kwargs)
+    else:
+        ax.scatter(data[:, 0], data[:, 1], *args, **kwargs)
     ax.set_xlim(-1, 1)
     ax.set_ylim(-1, 1)
 
@@ -70,30 +74,36 @@ def compare_plot_kmeans(
             coreset, sample_weight=mass
         )
 
-        plot2D(data[indices], axes[idx], s=16.0, c="tab:blue", label="Samples")
+        plot2D(data[indices], axes[idx], transpose=True, s=16.0, c="tab:cyan", label="Samples")
         plot2D(
             kmeans.cluster_centers_,
             axes[idx],
-            s=64.0,
+            transpose=True,
+            s=80.0,
             c="tab:orange",
-            marker="s",
+            edgecolors='black',
+            marker="^",
             label="Non-Replicable Centers",
         )
         plot2D(
             rKmeans.cluster_centers_,
             axes[idx],
-            s=64.0,
+            transpose=True,
+            s=80.0,
             c="tab:red",
-            marker="^",
+            edgecolors='black',
+            marker="s",
             label="Replicable Centers",
         )
         plot2D(
             coreset,
             axes[idx],
-            s=64.0,
+            transpose=True,
+            s=40.0,
             # linewidth=5,
-            c="tab:olive",
-            marker="1",
+            c="tab:green",
+            edgecolors='black',
+            marker="P",
             label="Coreset",
         )
 
@@ -101,9 +111,14 @@ def compare_plot_kmeans(
         axes[idx].set_yticks([])
         axes[idx].set_xlim(-1, 1)
         axes[idx].set_ylim(-1, 1)
-        axes[idx].set_title(f"Execution {idx+1}  ", loc="right", y=1.0, pad=-14)
+        axes[idx].set_title(
+            f"  Execution {idx+1}",
+            loc="left",
+            y=1.0, 
+            pad=-14,
+        )
         if idx == 1:
             axes[idx].legend(
-                loc="lower left",
+                loc="lower right",
                 # bbox_to_anchor=(1, 0.5)
             )
