@@ -74,13 +74,13 @@ def compare_plot_kmeans(
             coreset, sample_weight=mass
         )
 
-        plot2D(data[indices], axes[idx], transpose=True, s=16.0, c="tab:cyan", label="Samples")
+        plot2D(data[indices], axes[idx], transpose=True, s=16.0, c="tab:blue", label="Samples")
         plot2D(
             kmeans.cluster_centers_,
             axes[idx],
             transpose=True,
             s=80.0,
-            c="tab:orange",
+            c="tab:red",
             edgecolors='black',
             marker="^",
             label="Non-Replicable Centers",
@@ -90,22 +90,22 @@ def compare_plot_kmeans(
             axes[idx],
             transpose=True,
             s=80.0,
-            c="tab:red",
+            c="tab:green",
             edgecolors='black',
             marker="s",
             label="Replicable Centers",
         )
-        plot2D(
-            coreset,
-            axes[idx],
-            transpose=True,
-            s=40.0,
-            # linewidth=5,
-            c="tab:green",
-            edgecolors='black',
-            marker="P",
-            label="Coreset",
-        )
+        # plot2D(
+        #     coreset,
+        #     axes[idx],
+        #     transpose=True,
+        #     s=40.0,
+        #     # linewidth=5,
+        #     c="tab:green",
+        #     edgecolors='black',
+        #     marker="P",
+        #     label="Coreset",
+        # )
 
         axes[idx].set_xticks([])
         axes[idx].set_yticks([])
@@ -119,6 +119,6 @@ def compare_plot_kmeans(
         )
         if idx == 1:
             axes[idx].legend(
-                loc="lower right",
+                loc="upper right",
                 # bbox_to_anchor=(1, 0.5)
             )
